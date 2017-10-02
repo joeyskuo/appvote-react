@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import Card from './Card';
-import BarGraph from './BarGraph';
-import BarChart from './BarChart';
 import '../css/_survey.css';
 
 
@@ -25,8 +23,6 @@ class Survey extends Component {
                 <Card/>
               </div>
             </div>
-              <BarGraph/>
-              <BarChart data={[5,10,1,3]} size={[500,500]}/>
             </div>
         )
     }
