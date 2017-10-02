@@ -1,3 +1,8 @@
+.survey {
+  top: 100px;
+  position: relative;
+}
+
 .cardRow {
   display: inline-block;
 }

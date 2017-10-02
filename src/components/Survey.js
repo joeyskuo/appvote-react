@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Card from './Card';
+import options from './res/options';
 import '../css/_survey.css';
 
 
@@ -9,6 +10,8 @@ class Survey extends Component {
 
         return (
             <div className="survey">
+
+            <p>Survey Question Placeholder</p>
             <div>
               <div className="cardRow">
                 <Card/>
