@@ -3,8 +3,11 @@
   width: 150px;
   background-color: #fff;
   border-radius: 10px;
+  display: inherit;
+  margin: 5px 10px;
 }
 
 .card:hover {
   background-color: #ccc;
+  cursor: pointer;
 }
