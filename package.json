@@ -5,6 +5,9 @@
   "proxy": {
     "/vote": {
       "target": "http://localhost:8080"
+    },
+    "/votes": {
+      "target": "http://localhost:8080"
     }
   },
   "dependencies": {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BarChart from './BarChart';
-import '../css/_survey.css';
-
+import '../css/_results.css';
+import axios from 'axios';
 
 class Results extends Component {
 
@@ -19,11 +19,17 @@ class Results extends Component {
       )
     }
 
+    async getData() {
+      const res = await axios.get('/votes');
+      console.log(res);
+    }
+
     render() {
 
         return (
             <div className="results">
               <button onClick={() => this.setState({ reveal: true })}>Show Results</button>
+              <button onClick={() => this.getData()}>Get Votes</button>
               <div>
               { this.state.reveal ? this.renderContent() : "Empty" }
               </div>
