@@ -4,11 +4,16 @@ import axios from 'axios';
 
 class Card extends Component {
 
-    postVote() {
+    async postVote() {
 
       console.log("post request sent!");
 
+      var testVote = {
+        "appName": "testApp"
+      };
 
+      const res = await axios.post('/vote', testVote);
+      console.log(res);
     }
 
     createGraph() {

@@ -2,6 +2,11 @@
   "name": "appvote-react",
   "version": "0.1.0",
   "private": true,
+  "proxy": {
+    "/vote": {
+      "target": "http://localhost:8080"
+    }
+  },
   "dependencies": {
     "axios": "^0.16.2",
     "d3-array": "^1.2.1",
