@@ -4,3 +4,7 @@
   background-color: #fff;
   border-radius: 10px;
 }
+
+.card:hover {
+  background-color: #ccc;
+}
