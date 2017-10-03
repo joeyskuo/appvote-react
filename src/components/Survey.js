@@ -6,26 +6,32 @@ import '../css/_survey.css';
 
 class Survey extends Component {
 
+    componentDidMount() {
+       console.log(options);
+    }
+
     render() {
+
+      const optionList = options.map((option) =>
+        <Card appName={option.appName}/>
+      );
 
         return (
             <div className="survey">
 
             <p>Survey Question Placeholder</p>
-            <div>
-              <div className="cardRow">
-                <Card/>
-                <Card/>
-                <Card/>
+              <div>
+                <div>
+                  <div className="cardRow">
+                    {optionList.slice(0,3)}
+                  </div>
+                </div>
+                <div>
+                  <div className="cardRow">
+                    {optionList.slice(3,6)}
+                  </div>
               </div>
-            </div>
-            <div>
-              <div className="cardRow">
-                <Card/>
-                <Card/>
-                <Card/>
               </div>
-            </div>
             </div>
         )
     }

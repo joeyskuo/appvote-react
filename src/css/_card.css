@@ -5,6 +5,8 @@
   border-radius: 10px;
   display: inherit;
   margin: 5px 10px;
+  border: medium solid #737373;
+
 }
 
 .card:hover {

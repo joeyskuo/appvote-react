@@ -4,6 +4,10 @@ import axios from 'axios';
 
 class Card extends Component {
 
+    constructor(props){
+       super(props);
+    }
+
     async postVote() {
 
       console.log("post request sent!");
@@ -24,7 +28,7 @@ class Card extends Component {
 
         return (
             <div className="card" onClick={() => this.postVote()}>
-              <p>Test Card</p>
+              <p>{this.props.appName ? this.props.appName : "Test Card" }</p>
             </div>
         )
     }
