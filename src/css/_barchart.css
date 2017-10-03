@@ -1,0 +1,21 @@
+.bar {
+    fill: #5f89ad;
+}
+
+g {
+  background-color: black;
+}
+
+.axis {
+    font-size: 13px;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    display: none;
+}
+
+.label {
+    font-size: 18px;
+}

@@ -7,13 +7,13 @@ import '../css/_survey.css';
 class Survey extends Component {
 
     componentDidMount() {
-       console.log(options);
+       //console.log(options);
     }
 
     render() {
 
-      const optionList = options.map((option) =>
-        <Card appName={option.appName}/>
+      const optionList = options.map((option, index) =>
+        <Card key={index} appName={option.appName}/>
       );
 
         return (

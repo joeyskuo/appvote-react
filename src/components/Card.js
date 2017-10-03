@@ -4,9 +4,7 @@ import axios from 'axios';
 
 class Card extends Component {
 
-    constructor(props){
-       super(props);
-    }
+
 
     async postVote() {
 

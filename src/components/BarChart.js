@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { max } from 'd3-array';
-import { select } from 'd3-selection';
-import {scaleLinear} from 'd3-scale';
+import '../css/_barchart.css';
+import * as d3 from "d3";
 
 class BarChart extends Component {
 
@@ -19,38 +18,91 @@ class BarChart extends Component {
    }
 
    createBarChart() {
-      const node = this.node
-      const dataMax = max(this.props.data)
-      const yScale = scaleLinear()
-         .domain([0, dataMax])
-         .range([0, this.props.size[1]])
 
-   select(node)
-      .selectAll('rect')
-      .data(this.props.data)
-      .enter()
-      .append('rect')
+     var data = this.props.data;
+     console.log("Data from props:");
+     console.log(data);
+    //  //sort bars based on value
+    //  data = data.sort(function (a, b) {
+    //      return d3.ascending(a.value, b.value);
+    //  })
 
-   select(node)
-      .selectAll('rect')
-      .data(this.props.data)
-      .exit()
-      .remove()
+     //set up svg using margin conventions - we'll need plenty of room on the left for labels
+     var margin = {
+         top: 15,
+         right: 25,
+         bottom: 15,
+         left: 60
+     };
 
-   select(node)
-      .selectAll('rect')
-      .data(this.props.data)
-      .style('fill', '#fe9922')
-      .attr('x', (d,i) => i * 25)
-      .attr('y', d => this.props.size[1] - yScale(d))
-      .attr('height', d => yScale(d))
-      .attr('width', 25)
+     var width = 960 - margin.left - margin.right,
+         height = 500 - margin.top - margin.bottom;
+
+     var svg = d3.select("#graphic").append("svg")
+         .attr("width", width + margin.left + margin.right)
+         .attr("height", height + margin.top + margin.bottom)
+         .append("g")
+         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+     var x = d3.scaleLinear()
+         .range([0, width])
+         .domain([0, d3.max(data, function (d) {
+             return d.value;
+         })]);
+
+     var y = d3.scaleBand()
+         .range([height, 0])
+         .round(true)
+         .domain(data.map(function (d) {
+             return d.name;
+         }));
+
+     //make y axis to show bar names
+     var yAxis = d3.axisLeft(y)
+         //no tick marks
+         .tickSize(0);
+
+     var gy = svg.append("g")
+         .attr("class", "y axis")
+         .call(yAxis)
+
+     var bars = svg.selectAll(".bar")
+         .data(data)
+         .enter()
+         .append("g")
+
+     //append rects
+     bars.append("rect")
+         .attr("class", "bar")
+         .attr("y", function (d) {
+             return y(d.name);
+         })
+         .attr("height", y.bandwidth())
+         .attr("x", 0)
+         .attr("width", function (d) {
+             return x(d.value);
+         });
+
+     //add a value label to the right of each bar
+     bars.append("text")
+         .attr("class", "label")
+         //y position of the label is halfway down the bar
+         .attr("y", function (d) {
+             return y(d.name) + y.bandwidth() / 2 + 4;
+         })
+         //x position is 3 pixels to the right of the bar
+         .attr("x", function (d) {
+             return x(d.value) + 3;
+         })
+         .text(function (d) {
+             return d.value;
+         });
    }
 
   render() {
-        return <svg ref={node => this.node = node}
-        width={500} height={500}>
-        </svg>
+        return(
+          <div id="graphic"></div>
+        );
      }
 };
 
