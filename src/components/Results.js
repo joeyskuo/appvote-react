@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BarChart from './BarChart';
+import BarGraph from './BarGraph';
 import '../css/_results.css';
 import axios from 'axios';
 
@@ -15,7 +16,8 @@ class Results extends Component {
 
     renderContent() {
       return (
-        <BarChart data={[5,10,1,3]} size={[500,500]}/>
+        //<BarChart data={[5,10,1,3]} size={[500,500]}/>
+        <BarGraph />
       )
     }
 
