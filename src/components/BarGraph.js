@@ -21,12 +21,12 @@ class BarGraph extends Component {
       let barContainer = select('.js-horizontal-bar-chart-container'),
           containerWidth = barContainer.node() ? barContainer.node().getBoundingClientRect().width : false,
           dataset = [
-    {name: 'Eggs', value: 5},
-    {name: 'Milk', value: 9},
-    {name: 'Bread', value: 3},
-    {name: 'Coffee', value: 12},
-    {name: 'Oat', value: 6},
-    {name: 'Juice', value: 7}
+    {name: 'Option 1', value: 5},
+    {name: 'Option 2', value: 9},
+    {name: 'Option 3', value: 3},
+    {name: 'Option 4', value: 12},
+    {name: 'Option 5', value: 6},
+    {name: 'Option 6', value: 7}
 ];
 
       barChart
@@ -50,7 +50,7 @@ class BarGraph extends Component {
           .isHorizontal(true)
           .isAnimated(true);
 
-      barContainer.datum(data).call(barChart);
+      barContainer.datum(dataset).call(barChart);
     }
 
     render() {
