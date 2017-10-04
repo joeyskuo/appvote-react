@@ -40,7 +40,7 @@ class Results extends Component {
     renderContent() {
       return (
         //<BarChart data={this.state.data}/>
-        <BarGraph/>
+        <BarGraph data={this.state.data}/>
       )
     }
 
