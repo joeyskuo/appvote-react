@@ -13,10 +13,6 @@ class BarChart extends Component {
       this.createBarChart()
    }
 
-   componentDidUpdate() {
-      this.createBarChart()
-   }
-
    createBarChart() {
 
      var data = this.props.data;

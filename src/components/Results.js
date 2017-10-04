@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BarChart from './BarChart';
+import BarGraph from './BarGraph';
 import '../css/_results.css';
 import axios from 'axios';
 
@@ -37,34 +38,9 @@ class Results extends Component {
     }
 
     renderContent() {
-      // var data = [{
-      //         "name": "Option 1",
-      //         "value": 20,
-      // },
-      //     {
-      //         "name": "Option 2",
-      //         "value": 12,
-      // },
-      //     {
-      //         "name": "Option 3",
-      //         "value": 19,
-      // },
-      //     {
-      //         "name": "Option 4",
-      //         "value": 5,
-      // },
-      //     {
-      //         "name": "Option 5",
-      //         "value": 16,
-      // },
-      //     {
-      //         "name": "Option 6",
-      //         "value": 26,
-      // }];
-      // let votes = this.getVotes();
       return (
-        <BarChart data={this.state.data}/>
-        //<BarGraph />
+        //<BarChart data={this.state.data}/>
+        <BarGraph/>
       )
     }
 
