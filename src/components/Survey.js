@@ -6,12 +6,7 @@ import '../css/_survey.css';
 
 class Survey extends Component {
 
-    logTest(){
-      console.log("test");
-    }
-
     showSurvey(){
-      var that = this;
       const optionList = options.map((option, index) =>
         <Card key={index} appName={option.appName}/>
       );
@@ -42,7 +37,6 @@ class Survey extends Component {
             <p>Survey Question Placeholder</p>
 
             { this.showSurvey() }
-            <button onClick={this.props.showResults}>Parent Call</button>
             </div>
         )
     }

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import '../css/_card.css';
 import axios from 'axios';
+import { showResults } from '../actions/index';
 
 class Card extends Component {
 
@@ -16,6 +19,7 @@ class Card extends Component {
 
       const res = await axios.post('/vote', testVote);
       console.log(res);
+
     }
 
     createGraph() {
@@ -25,11 +29,18 @@ class Card extends Component {
     render() {
 
         return (
-            <div className="card" onClick={() => this.postVote()}>
+            <div className="card" onClick={() => {
+              this.postVote();
+              this.props.showResults(true);}}>
               <p>{this.props.appName ? this.props.appName : "Test Card" }</p>
             </div>
         )
     }
 }
 
-export default Card;
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({showResults: showResults}, dispatch)
+}
+
+
+export default connect(null, mapDispatchToProps)(Card);

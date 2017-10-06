@@ -1,40 +1,36 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Survey from './Survey';
 import Results from './Results';
 
 class Frame extends Component {
 
-  constructor() {
-      super();
-
-      this.state = {
-          reveal: false,
-          data: []
-      }
-
-      this.showResults = this.showResults.bind(this);
-  }
-
-  showResults() {
-    console.log(this.state.reveal);
-    this.setState({reveal: true});
-    console.log("executed!");
-    
-    console.log(this.state.reveal);
+  renderContent() {
+    return (
+      <div>
+        <Results />
+      </div>
+    )
   }
 
   render() {
     return (
       <div className="frame">
+
+
         <div>
-          <Survey showResults={this.showResults}/>
+            { this.props.voted ? <Results/> : <Survey /> }
         </div>
-        <div>
-          <Results />
-        </div>
+
       </div>
     );
   }
 }
 
-export default Frame;
+function mapStateToProps(state){
+  return {
+    voted: state.voted
+  };
+}
+
+export default connect(mapStateToProps, null)(Frame);

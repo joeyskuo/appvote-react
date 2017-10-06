@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { select } from 'd3-selection';
-import { scaleLinear } from 'd3-scale';
-import { max } from 'd3-array';
 import * as britecharts from 'britecharts';
 import '../css/_piegraph.css';
 
@@ -13,12 +11,11 @@ class PieGraph extends Component {
 
     createPieChart() {
 
-      var data = this.props.data;
+      //var data = this.props.data;
 
       const pieChart = new britecharts.donut();
-      const { colorSchemas } = britecharts.colors;
       let barContainer = select('.js-horizontal-bar-chart-container'),
-          containerWidth = barContainer.node() ? barContainer.node().getBoundingClientRect().width : false,
+          //containerWidth = barContainer.node() ? barContainer.node().getBoundingClientRect().width : false,
           dataset = [
             {name: 'Option 1', quantity: 5, id: 1},
             {name: 'Option 2', quantity: 9, id: 2},

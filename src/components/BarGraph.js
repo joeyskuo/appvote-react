@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { select } from 'd3-selection';
-import { scaleLinear } from 'd3-scale';
-import { max } from 'd3-array';
 import * as britecharts from 'britecharts';
 //import barChart from 'britecharts/dist/umd/bar.min';
 import '../css/_chart.css';
@@ -14,12 +12,11 @@ class BarGraph extends Component {
 
     createBarChart() {
 
-      var data = this.props.data;
+      //var data = this.props.data;
 
       const barChart = new britecharts.bar();
-      const { colorSchemas } = britecharts.colors;
       let barContainer = select('.js-horizontal-bar-chart-container'),
-          containerWidth = barContainer.node() ? barContainer.node().getBoundingClientRect().width : false,
+          //containerWidth = barContainer.node() ? barContainer.node().getBoundingClientRect().width : false,
           dataset = [
     {name: 'Option 1', value: 5},
     {name: 'Option 2', value: 9},

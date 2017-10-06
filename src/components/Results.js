@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import BarChart from './BarChart';
 import BarGraph from './BarGraph';
 import PieGraph from './PieGraph';
 import '../css/_results.css';
@@ -69,10 +68,8 @@ class Results extends Component {
 
         return (
             <div className="results">
-              <button onClick={() => this.setState({ reveal: true })}>Show Results</button>
-              <button onClick={() => this.getVotes()}>Get Votes</button>
               <div>
-              { this.state.reveal ? this.renderContent() : "Empty" }
+              { this.renderContent() }
               </div>
             </div>
 
