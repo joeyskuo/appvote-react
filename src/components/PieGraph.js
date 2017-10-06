@@ -28,10 +28,6 @@ class PieGraph extends Component {
             {name: 'Option 6', quantity: 7, id: 6}
           ];
 
-          var legendChart = new britecharts.legend(),
-              legendContainer = select('.js-legend-chart-container'),
-              legendContainerWidth = legendContainer.node() ? legendContainer.node().getBoundingClientRect().width : false;
-
       pieChart
           .margin({
               left: 120,
@@ -50,31 +46,36 @@ class PieGraph extends Component {
             '#f866b9', //pink
             '#998ce3' //purple
         ])
-          .isAnimated(true)
-          .on('customMouseOver', function(data) {
-              legendChart.highlight(data.data.id);
-          })
-          .on('customMouseOut', function() {
-              legendChart.clearHighlight();
-          });
+          .isAnimated(true);
 
-          legendChart
-              .width(800)
-              .height(200)
+          // .on('customMouseOver', function(data) {
+          //     legendChart.highlight(data.data.id);
+          // })
+          // .on('customMouseOut', function() {
+          //     legendChart.clearHighlight();
+          // });
 
-              .isHorizontal(true)
-              .numberFormat('s')
-              .colorSchema([
-                '#6aedc7', //green
-                '#39c2c9', //blue
-                '#ffce00', //yellow
-                '#ffa71a', //orange
-                '#f866b9', //pink
-                '#998ce3' //purple
-            ]);
+          // var legendChart = new britecharts.legend(),
+          //     legendContainer = select('.js-legend-chart-container'),
+          //     legendContainerWidth = legendContainer.node() ? legendContainer.node().getBoundingClientRect().width : false;
+          //
+          // legendChart
+          //     .width(800)
+          //     .height(200)
+          //
+          //     //.isHorizontal(true)
+          //     .numberFormat('s')
+          //     .colorSchema([
+          //       '#6aedc7', //green
+          //       '#39c2c9', //blue
+          //       '#ffce00', //yellow
+          //       '#ffa71a', //orange
+          //       '#f866b9', //pink
+          //       '#998ce3' //purple
+          //   ]);
 
       barContainer.datum(dataset).call(pieChart);
-      legendContainer.datum(dataset).call(legendChart);
+      //legendContainer.datum(dataset).call(legendChart);
     }
 
     render() {

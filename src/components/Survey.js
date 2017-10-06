@@ -6,18 +6,14 @@ import '../css/_survey.css';
 
 class Survey extends Component {
 
-  constructor() {
-      super();
+    logTest(){
+      console.log("test");
+    }
 
-      this.state = {
-          reveal: true,
-          data: []
-      }
-  }
     showSurvey(){
       var that = this;
       const optionList = options.map((option, index) =>
-        <Card key={index} appName={option.appName} onClick={() => that.setState({ reveal: false })}/>
+        <Card key={index} appName={option.appName}/>
       );
 
       return(
@@ -45,8 +41,8 @@ class Survey extends Component {
 
             <p>Survey Question Placeholder</p>
 
-            { this.state.reveal ? this.showSurvey() : "Empty" }
-
+            { this.showSurvey() }
+            <button onClick={this.props.showResults}>Parent Call</button>
             </div>
         )
     }
