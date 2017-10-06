@@ -6,3 +6,7 @@ button {
   top: 150px;
   position: relative;
 }
+
+#resultData {
+  display: inline-block;
+}

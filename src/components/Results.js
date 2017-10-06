@@ -39,7 +39,7 @@ class Results extends Component {
 
     renderContent() {
       return (
-        <div>
+        <div id="resultData">
           <PieGraph data={this.state.data}/>
           <BarGraph data={this.state.data}/>
         </div>
