@@ -47,7 +47,7 @@ class BarGraph extends Component {
           .isHorizontal(true)
           .isAnimated(true);
 
-      barContainer.datum(dataset).call(barChart);
+      barContainer.datum(dataset.reverse()).call(barChart);
     }
 
     render() {
