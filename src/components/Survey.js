@@ -6,32 +6,47 @@ import '../css/_survey.css';
 
 class Survey extends Component {
 
-    componentDidMount() {
-       //console.log(options);
+  constructor() {
+      super();
+
+      this.state = {
+          reveal: true,
+          data: []
+      }
+  }
+    showSurvey(){
+      var that = this;
+      const optionList = options.map((option, index) =>
+        <Card key={index} appName={option.appName} onClick={() => that.setState({ reveal: false })}/>
+      );
+
+      return(
+        <div id="Survey">
+          <div>
+            <div className="cardRow">
+              {optionList.slice(0,3)}
+            </div>
+          </div>
+          <div>
+            <div className="cardRow">
+              {optionList.slice(3,6)}
+            </div>
+        </div>
+        </div>
+      )
     }
 
     render() {
 
-      const optionList = options.map((option, index) =>
-        <Card key={index} appName={option.appName}/>
-      );
+
 
         return (
             <div className="survey">
 
             <p>Survey Question Placeholder</p>
-              <div>
-                <div>
-                  <div className="cardRow">
-                    {optionList.slice(0,3)}
-                  </div>
-                </div>
-                <div>
-                  <div className="cardRow">
-                    {optionList.slice(3,6)}
-                  </div>
-              </div>
-              </div>
+
+            { this.state.reveal ? this.showSurvey() : "Empty" }
+
             </div>
         )
     }

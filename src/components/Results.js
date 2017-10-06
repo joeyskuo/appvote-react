@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import BarChart from './BarChart';
 import BarGraph from './BarGraph';
+import PieGraph from './PieGraph';
 import '../css/_results.css';
 import axios from 'axios';
 
@@ -39,8 +40,10 @@ class Results extends Component {
 
     renderContent() {
       return (
-        //<BarChart data={this.state.data}/>
-        <BarGraph data={this.state.data}/>
+        <div>
+          <PieGraph data={this.state.data}/>
+          <BarGraph data={this.state.data}/>
+        </div>
       )
     }
 
