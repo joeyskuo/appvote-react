@@ -3,18 +3,18 @@
 .card {
   height: 180px;
   width: 135px;
-  background-color: #f2f2f2;
+  background-color: #f4e9de;
   border-radius: 10px;
   display: inherit;
   margin: 10px 10px;
   color: #333;
-  border: medium solid #737373;
+  border: medium solid #998775;
   font-family: 'Source Sans Pro', sans-serif;
   opacity: 100%;
 }
 
 .card:hover {
-  background-color: #ccc;
+  background-color: #ccb7a3;
   cursor: pointer;
 }
 
