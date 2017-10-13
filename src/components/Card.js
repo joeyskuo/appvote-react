@@ -7,19 +7,38 @@ import { showResults } from '../actions/index';
 
 class Card extends Component {
 
+  async getData() {
+    const res = await axios.get('https://appvote-spring.herokuapp.com/votes');
+    //console.log(res);
+    const votes = res.data.votes;
+    let voteList = {};
 
+    votes.map((vote) => {
+      if(voteList[vote.appName]) {
+        voteList[vote.appName] += 1;
+      } else {
+        voteList[vote.appName] = 1;
+      };
+
+    });
+    //console.log(voteList);
+    return voteList;
+  }
 
     async postVote() {
 
       console.log("post request sent!");
 
       var testVote = {
-        "appName": "testApp"
+        "appName": "testVote"
       };
 
-      const res = await axios.post('/vote', testVote);
+      const res = await axios.post('https://appvote-spring.herokuapp.com/vote', testVote);
+      this.props.showResults(true);
+      let data = await this.getData();
+      // this.props.setData(response)
       console.log(res);
-
+      console.log(data);
     }
 
     createGraph() {
@@ -31,7 +50,7 @@ class Card extends Component {
         return (
             <div className="card" onClick={() => {
               this.postVote();
-              this.props.showResults(true);}}>
+              }}>
               <p>{this.props.appName ? this.props.appName : "Test Card" }</p>
             </div>
         )

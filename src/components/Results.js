@@ -16,10 +16,10 @@ class Results extends Component {
     }
 
 
-    async componentDidMount() {
+    async componentWillMount() {
       let data = await this.getVotes();
        this.setState({ data: data });
-       //console.log(data);
+       //console.log(this.state.data);
     }
 
     async getVotes() {
@@ -32,8 +32,8 @@ class Results extends Component {
           "value": dataSet[key]
         });
       }
-      console.log("Success! Converted Data:")
-      console.log(data);
+      //console.log("Success! Converted Data:")
+      //console.log(data);
       return data;
     }
 
@@ -47,7 +47,7 @@ class Results extends Component {
     }
 
     async getData() {
-      const res = await axios.get('/votes');
+      const res = await axios.get('https://appvote-spring.herokuapp.com/votes');
       //console.log(res);
       const votes = res.data.votes;
       let voteList = {};

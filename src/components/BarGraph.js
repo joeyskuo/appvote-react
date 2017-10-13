@@ -7,13 +7,13 @@ import '../css/_chart.css';
 class BarGraph extends Component {
 
   componentDidMount() {
-     this.createBarChart()
+     this.createBarChart();
   }
 
     createBarChart() {
 
       //var data = this.props.data;
-
+      //console.log(this.props.data);
       const barChart = new britecharts.bar();
       let barContainer = select('.js-horizontal-bar-chart-container'),
           //containerWidth = barContainer.node() ? barContainer.node().getBoundingClientRect().width : false,
@@ -47,7 +47,7 @@ class BarGraph extends Component {
           .isHorizontal(true)
           .isAnimated(true);
 
-      barContainer.datum(dataset.reverse()).call(barChart);
+      barContainer.datum(dataset).call(barChart);
     }
 
     render() {

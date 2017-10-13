@@ -2,7 +2,6 @@
   "name": "appvote-react",
   "version": "0.1.0",
   "private": true,
-
   "dependencies": {
     "axios": "^0.16.2",
     "britecharts": "^2.0.1",
