@@ -1,15 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
 .card {
   height: 180px;
-  width: 150px;
-  background-color: #fff;
+  width: 135px;
+  background-color: #f2f2f2;
   border-radius: 10px;
   display: inherit;
   margin: 10px 10px;
+  color: #333;
   border: medium solid #737373;
-
+  font-family: 'Source Sans Pro', sans-serif;
+  opacity: 100%;
 }
 
 .card:hover {
   background-color: #ccc;
   cursor: pointer;
+}
+
+
+
+h4 {
+  margin-top: 30%;
+
+}
+
+.cardIcon {
+  margin-top: 20%;
 }

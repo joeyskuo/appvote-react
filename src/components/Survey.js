@@ -8,7 +8,7 @@ class Survey extends Component {
 
     showSurvey(){
       const optionList = options.map((option, index) =>
-        <Card key={index} appName={option.appName}/>
+        <Card key={index} appName={option.appName} icon={option.source}/>
       );
 
       return(
@@ -34,7 +34,7 @@ class Survey extends Component {
         return (
             <div className="survey">
 
-            <p>Survey Question Placeholder</p>
+            <h2>Which social network do you use the most?</h2>
 
             { this.showSurvey() }
             </div>

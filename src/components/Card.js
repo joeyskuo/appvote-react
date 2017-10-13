@@ -4,8 +4,27 @@ import { connect } from 'react-redux';
 import '../css/_card.css';
 import axios from 'axios';
 import { showResults, setVoteData } from '../actions/index';
+import facebook from './res/images/facebook.png';
+import google from './res/images/google-plus.png';
+import instagram from './res/images/instagram.png';
+import linkedin from './res/images/linkedin.png';
+import pinterest from './res/images/pinterest.png';
+import twitter from './res/images/twitter.png';
 
 class Card extends Component {
+
+  getIcon(name){
+    switch(name){
+      case "google": return google;
+      case "facebook": return facebook;
+      case "instagram": return instagram;
+      case "linkedin": return linkedin;
+      case "pinterest": return pinterest;
+      case "twitter": return twitter;
+      default: return twitter;
+    }
+  }
+
 
   async getData() {
     const res = await axios.get('https://appvote-spring.herokuapp.com/votes');
@@ -39,17 +58,12 @@ class Card extends Component {
 
     }
 
-    createGraph() {
-
-    }
-
     render() {
 
         return (
-            <div className="card" onClick={() => {
-              this.postVote();
-              }}>
-              <p>{this.props.appName ? this.props.appName : "Test Card" }</p>
+            <div className="card" onClick={() => this.postVote()}>
+              <img className="cardIcon" src={this.getIcon(this.props.icon)}></img>
+              <h4>{this.props.appName}</h4>
             </div>
         )
     }

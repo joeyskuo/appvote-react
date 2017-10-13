@@ -49,12 +49,12 @@ class BarGraph extends Component {
           .width(800)
           .height(300)
           .colorSchema([
-            '#6aedc7', //green
-            '#39c2c9', //blue
-            '#ffce00', //yellow
-            '#ffa71a', //orange
-            '#f866b9', //pink
-            '#998ce3' //purple
+            '#3b5998', //green // facebook
+            '#00aced', //blue  // twitter
+            '#dd4b39', //yellow // google
+            '#007bb6', //orange // linkedin
+            '#bc2a8d', //pink // instagram
+            '#cb2027' //purple // pinterest
         ])
           .percentageAxisToMaxRatio(1.3)
           .isHorizontal(true)

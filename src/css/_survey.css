@@ -1,6 +1,11 @@
 .survey {
   top: 100px;
   position: relative;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+h2 {
+  color: #404040;
 }
 
 .cardRow {
