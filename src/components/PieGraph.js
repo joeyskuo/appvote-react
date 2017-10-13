@@ -15,8 +15,6 @@ class PieGraph extends Component {
       });
     }
 
-    console.log(data);
-
     return data;
   }
 

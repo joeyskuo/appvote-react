@@ -16,8 +16,6 @@ class BarGraph extends Component {
       });
     }
 
-    console.log(data);
-
     return data;
   }
 

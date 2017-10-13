@@ -24,7 +24,6 @@ class Results extends Component {
 
     async getVotes() {
       const dataSet = await this.getData();
-      console.log(dataSet);
       let data = [];
       for (var key in dataSet){
         data.push({

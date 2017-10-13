@@ -9,7 +9,6 @@ class Card extends Component {
 
   async getData() {
     const res = await axios.get('https://appvote-spring.herokuapp.com/votes');
-    //console.log(res);
     const votes = res.data.votes;
     let voteList = {};
 
@@ -21,7 +20,6 @@ class Card extends Component {
       };
 
     });
-    //console.log(voteList);
     return voteList;
   }
 
@@ -30,7 +28,7 @@ class Card extends Component {
       console.log("post request sent!");
 
       var testVote = {
-        "appName": "Option 6"
+        "appName": this.props.appName
       };
 
       const res = await axios.post('https://appvote-spring.herokuapp.com/vote', testVote);
@@ -38,8 +36,7 @@ class Card extends Component {
       let data = await this.getData();
       await this.props.setVoteData(data);
       this.props.showResults(true);
-      console.log(res);
-      console.log(data);
+
     }
 
     createGraph() {
