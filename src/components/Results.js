@@ -41,7 +41,7 @@ class Results extends Component {
       return (
         <div id="resultData">
           <PieGraph data={this.state.data}/>
-          <BarGraph data={this.state.data}/>
+          <BarGraph/>
         </div>
       )
     }

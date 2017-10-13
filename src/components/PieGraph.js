@@ -1,16 +1,32 @@
 import React, { Component } from 'react';
 import { select } from 'd3-selection';
 import * as britecharts from 'britecharts';
+import { connect } from 'react-redux';
 import '../css/_piegraph.css';
 
 class PieGraph extends Component {
+
+  formatData(rawData) {
+    let data = [];
+    for (var key in rawData){
+      data.push({
+        "name": key,
+        "quantity": rawData[key]
+      });
+    }
+
+    console.log(data);
+
+    return data;
+  }
+
 
     componentDidMount() {
        this.createPieChart()
     }
 
     createPieChart() {
-
+      var data = this.formatData(this.props.voteData);
       //var data = this.props.data;
 
       const pieChart = new britecharts.donut();
@@ -71,7 +87,7 @@ class PieGraph extends Component {
           //       '#998ce3' //purple
           //   ]);
 
-      barContainer.datum(dataset).call(pieChart);
+      barContainer.datum(data).call(pieChart);
       //legendContainer.datum(dataset).call(legendChart);
     }
 
@@ -86,4 +102,8 @@ class PieGraph extends Component {
     }
 }
 
-export default PieGraph;
+function mapStateToProps(state) {
+    return { voteData: state.voteData }
+}
+
+export default connect(mapStateToProps, null)(PieGraph);

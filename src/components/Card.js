@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import '../css/_card.css';
 import axios from 'axios';
-import { showResults } from '../actions/index';
+import { showResults, setVoteData } from '../actions/index';
 
 class Card extends Component {
 
@@ -30,13 +30,14 @@ class Card extends Component {
       console.log("post request sent!");
 
       var testVote = {
-        "appName": "testVote"
+        "appName": "Option 6"
       };
 
       const res = await axios.post('https://appvote-spring.herokuapp.com/vote', testVote);
-      this.props.showResults(true);
+
       let data = await this.getData();
-      // this.props.setData(response)
+      await this.props.setVoteData(data);
+      this.props.showResults(true);
       console.log(res);
       console.log(data);
     }
@@ -58,7 +59,7 @@ class Card extends Component {
 }
 
 function mapDispatchToProps(dispatch){
-  return bindActionCreators({showResults: showResults}, dispatch)
+  return bindActionCreators({showResults: showResults, setVoteData: setVoteData}, dispatch)
 }
 
 

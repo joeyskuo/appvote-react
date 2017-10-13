@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
 import { select } from 'd3-selection';
 import * as britecharts from 'britecharts';
-//import barChart from 'britecharts/dist/umd/bar.min';
+import { connect } from 'react-redux';
 import '../css/_chart.css';
 
 class BarGraph extends Component {
+
+
+  formatData(rawData) {
+    let data = [];
+    for (var key in rawData){
+      data.push({
+        "name": key,
+        "value": rawData[key]
+      });
+    }
+
+    console.log(data);
+
+    return data;
+  }
 
   componentDidMount() {
      this.createBarChart();
@@ -12,7 +27,7 @@ class BarGraph extends Component {
 
     createBarChart() {
 
-      //var data = this.props.data;
+      var data = this.formatData(this.props.voteData);
       //console.log(this.props.data);
       const barChart = new britecharts.bar();
       let barContainer = select('.js-horizontal-bar-chart-container'),
@@ -47,7 +62,7 @@ class BarGraph extends Component {
           .isHorizontal(true)
           .isAnimated(true);
 
-      barContainer.datum(dataset).call(barChart);
+      barContainer.datum(data.reverse()).call(barChart);
     }
 
     render() {
@@ -60,4 +75,8 @@ class BarGraph extends Component {
     }
 }
 
-export default BarGraph;
+function mapStateToProps(state) {
+    return { voteData: state.voteData }
+}
+
+export default connect(mapStateToProps, null)(BarGraph);

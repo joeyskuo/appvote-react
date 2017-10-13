@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { SHOW_RESULTS } from '../actions';
+import { SHOW_RESULTS, SET_DATA } from '../actions';
 
 function voted(state = {}, action) {
 
@@ -12,4 +12,15 @@ function voted(state = {}, action) {
     }
 }
 
-export default combineReducers({ voted });
+function voteData(state = {}, action) {
+
+    switch (action.type){
+        case SET_DATA:
+            console.log(`Action emitted with value: ${action.voteData}`);
+            return action.voteData;
+        default:
+            return state;
+    }
+}
+
+export default combineReducers({ voted, voteData });

@@ -1,6 +1,6 @@
 
 export const SHOW_RESULTS = 'SHOW_RESULTS';
-export const GET_DATA = 'GET_DATA';
+export const SET_DATA = 'SET_DATA';
 
 export function showResults(setting) {
     return {
@@ -10,9 +10,9 @@ export function showResults(setting) {
 
 }
 
-export function getVoteData(data) {
+export function setVoteData(data) {
     return {
-        type: 'GET_DATA',
+        type: 'SET_DATA',
         voteData: data
     };
 
