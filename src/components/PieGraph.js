@@ -28,7 +28,7 @@ class PieGraph extends Component {
       //var data = this.props.data;
 
       const pieChart = new britecharts.donut();
-      let barContainer = select('.js-horizontal-bar-chart-container'),
+      let barContainer = select('.js-pie-chart-container'),
           //containerWidth = barContainer.node() ? barContainer.node().getBoundingClientRect().width : false,
           dataset = [
             {name: 'Option 1', quantity: 5, id: 1},
@@ -46,9 +46,10 @@ class PieGraph extends Component {
               top: 20,
               bottom: 20
           })
-          .width(500)
-          .height(300)
-          .internalRadius(70)
+          .width(400)
+          .height(250)
+          .externalRadius(110)
+          .internalRadius(50)
           .colorSchema([
             '#3b5998', //green // facebook
             '#00aced', //blue  // twitter
@@ -66,35 +67,37 @@ class PieGraph extends Component {
           //     legendChart.clearHighlight();
           // });
 
-          // var legendChart = new britecharts.legend(),
-          //     legendContainer = select('.js-legend-chart-container'),
-          //     legendContainerWidth = legendContainer.node() ? legendContainer.node().getBoundingClientRect().width : false;
-          //
-          // legendChart
-          //     .width(800)
-          //     .height(200)
-          //
-          //     //.isHorizontal(true)
-          //     .numberFormat('s')
-          //     .colorSchema([
-          //       '#6aedc7', //green
-          //       '#39c2c9', //blue
-          //       '#ffce00', //yellow
-          //       '#ffa71a', //orange
-          //       '#f866b9', //pink
-          //       '#998ce3' //purple
-          //   ]);
+          var legendChart = new britecharts.legend(),
+              legendContainer = select('.js-legend-chart-container'),
+              legendContainerWidth = legendContainer.node() ? legendContainer.node().getBoundingClientRect().width : false;
+
+          legendChart
+              .width(legendContainerWidth)
+              .height(100)
+              .isHorizontal(true)
+              .numberFormat('s')
+
+              .colorSchema([
+                '#3b5998', //green // facebook
+                '#00aced', //blue  // twitter
+                '#dd4b39', //yellow // google
+                '#007bb6', //orange // linkedin
+                '#bc2a8d', //pink // instagram
+                '#cb2027' //purple // pinterest
+            ]);
 
       barContainer.datum(data).call(pieChart);
-      //legendContainer.datum(dataset).call(legendChart);
+      legendContainer.datum(data).call(legendChart);
     }
 
     render() {
 
         return (
             <div className="pieGraph">
-              <div id="pie" className="js-horizontal-bar-chart-container"></div>
+              <div className="dataContainer">
+              <div id="pie" className="js-pie-chart-container"></div>
               <div id="legend" className="js-legend-chart-container"></div>
+              </div>
             </div>
         )
     }

@@ -1,5 +1,4 @@
 .chart div {
-  font: 10px sans-serif;
   background-color: steelblue;
   text-align: right;
   padding: 3px;
@@ -7,6 +6,7 @@
   color: white;
 
 }
+
 
 .chart {
   width: 30%;
@@ -16,5 +16,21 @@
 
 .barGraph {
   text-align: center;
-  height: 600px;
+  width:  750px;
+  height: 400px;
+  background-color: #F2E5DA;
+  border: medium solid #DBC3AF;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #888888;
+  position: relative;
+  margin: 10px 10px;
+
+}
+
+line {
+  stroke: #a6abb1;
+}
+
+.chartContainer {
+  margin: 40px 0px;
 }

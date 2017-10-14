@@ -1,8 +1,19 @@
 #legend {
+  z-index: 99;
+}
 
+.dataContainer {
+  margin: 30px 0px;
 }
 
 .pieGraph {
-  width: 500px;
-  height: 800px;
+  width: 750px;
+  height: 400px;
+  border: medium solid #DBC3AF;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px #888888;
+  background-color: #F2E5DA;
+  position: relative;
+  margin: 10px 10px;
+
 }

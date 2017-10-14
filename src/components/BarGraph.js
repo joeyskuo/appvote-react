@@ -46,7 +46,7 @@ class BarGraph extends Component {
               top: 20,
               bottom: 20
           })
-          .width(800)
+          .width(700)
           .height(300)
           .colorSchema([
             '#3b5998', //green // facebook
@@ -67,7 +67,9 @@ class BarGraph extends Component {
 
         return (
             <div className="barGraph">
-              <div className="js-horizontal-bar-chart-container"></div>
+              <div className="chartContainer">
+                <div className="js-horizontal-bar-chart-container"></div>
+              </div>
             </div>
         )
     }

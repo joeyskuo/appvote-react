@@ -12,8 +12,8 @@ class Results extends Component {
         return (
             <div className="results">
               <div id="resultData">
-                <PieGraph/>
-                <BarGraph/>
+                  <PieGraph/>
+                  <BarGraph/>
               </div>
             </div>
 

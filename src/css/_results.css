@@ -4,9 +4,13 @@ button {
 
 .results {
   top: 50px;
-  position: relative;
 }
 
 #resultData {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+}
+
+svg {
+
 }
