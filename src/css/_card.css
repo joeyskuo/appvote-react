@@ -10,8 +10,11 @@
   color: #333;
   border: medium solid #998775;
   font-family: 'Source Sans Pro', sans-serif;
-  opacity: 100%;
+  animation-name: fade-in;
+  animation-duration: 2s;
+  box-shadow: 5px 5px 5px #888888;
 }
+
 
 .card:hover {
   background-color: #ccb7a3;
@@ -22,9 +25,14 @@
 
 h4 {
   margin-top: 30%;
-
+  color: #796244;
 }
 
 .cardIcon {
   margin-top: 20%;
+}
+
+@keyframes fade-in {
+    from { opacity: 0 }
+    to { opacity: 100 }
 }
