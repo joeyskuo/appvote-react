@@ -28,6 +28,7 @@ class Card extends Component {
 
   async getData() {
     const res = await axios.get('https://appvote-spring.herokuapp.com/votes');
+    console.log(res);
     const votes = res.data.votes;
     let voteList = {};
 

@@ -16,8 +16,8 @@
 
 .barGraph {
   text-align: center;
-  width:  750px;
-  height: 400px;
+  width:  645px;
+  height: 320px;
   background-color: #F2E5DA;
   border: medium solid #DBC3AF;
   border-radius: 5px;
@@ -32,5 +32,5 @@ line {
 }
 
 .chartContainer {
-  margin: 40px 0px;
+  margin: 0px 0px;
 }

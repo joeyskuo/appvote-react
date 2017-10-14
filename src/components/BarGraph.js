@@ -46,7 +46,7 @@ class BarGraph extends Component {
               top: 20,
               bottom: 20
           })
-          .width(700)
+          .width(600)
           .height(300)
           .colorSchema([
             '#3b5998', //green // facebook

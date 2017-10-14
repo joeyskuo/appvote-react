@@ -47,7 +47,7 @@ class PieGraph extends Component {
               bottom: 20
           })
           .width(400)
-          .height(250)
+          .height(220)
           .externalRadius(110)
           .internalRadius(50)
           .colorSchema([
@@ -72,8 +72,8 @@ class PieGraph extends Component {
               legendContainerWidth = legendContainer.node() ? legendContainer.node().getBoundingClientRect().width : false;
 
           legendChart
-              .width(legendContainerWidth)
-              .height(100)
+              .width(330)
+              .height(70)
               .isHorizontal(true)
               .numberFormat('s')
 

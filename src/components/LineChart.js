@@ -103,7 +103,7 @@ class LineChart extends Component {
 
         return (
             <div className="lineChart">
-              <div className="dataContainer">
+              <div className="lineContainer">
                 <div id="line" className="js-line-chart-container"></div>
               </div>
             </div>

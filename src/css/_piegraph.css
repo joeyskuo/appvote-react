@@ -3,12 +3,12 @@
 }
 
 .dataContainer {
-  margin: 30px 0px;
+  margin: 15px 0px;
 }
 
 .pieGraph {
-  width: 750px;
-  height: 400px;
+  width: 450px;
+  height: 320px;
   border: medium solid #DBC3AF;
   border-radius: 5px;
   box-shadow: 2px 2px 5px #888888;
