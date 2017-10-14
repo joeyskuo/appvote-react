@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { select } from 'd3-selection';
 import * as britecharts from 'britecharts';
 import { connect } from 'react-redux';
+import dummyData from './res/dummyData';
 import '../css/_linechart.css';
 
 class LineChart extends Component {
@@ -29,47 +30,10 @@ class LineChart extends Component {
 
       const lineChart = new britecharts.line();
       const chartTooltip = new britecharts.tooltip();
-      chartTooltip.title('Vote Count');
+      chartTooltip.title('Votes Received');
 
       let lineContainer = select('.js-line-chart-container'),
-          containerWidth = lineContainer.node() ? lineContainer.node().getBoundingClientRect().width : false,
-          dataset = {
-              dataByTopic: [
-                  {
-                      topicName: 'San Francisco',
-                      topic: 123,
-                      dates: [
-                          {
-
-                              value: 1,
-                              'fullDate': '2015-06-27T07:00:00.000Z'
-                          },
-                          {
-
-                              value: 2,
-                              'fullDate': '2015-06-30T07:00:00.000Z'
-                          }
-                      ]
-                  },
-                  {
-                      topicName: 'Other',
-                      topic: 345,
-                      dates: [
-                          {
-
-                              value: 1,
-                              'fullDate': '2015-06-30T07:00:00.000Z'
-
-                          },
-                          {
-
-                              value: 2,
-                              'fullDate': '2015-06-27T07:00:00.000Z'
-                          }
-                      ]
-                  }
-              ]
-          };
+          containerWidth = lineContainer.node() ? lineContainer.node().getBoundingClientRect().width : false;
 
       lineChart
           .isAnimated(true)
@@ -78,6 +42,7 @@ class LineChart extends Component {
           .grid('horizontal')
           //.tooltipThreshold(600)
           .width(containerWidth)
+          .xAxisCustomFormat(lineChart.axisTimeCombinations.DAY_MONTH)
           .dateLabel('fullDate')
           .colorSchema([
             '#3b5998', //green // facebook
@@ -92,7 +57,7 @@ class LineChart extends Component {
           .on('customMouseOut', chartTooltip.hide);
 
 
-      lineContainer.datum(dataset).call(lineChart);
+      lineContainer.datum(dummyData).call(lineChart);
 
       const tooltipContainer = lineContainer.select('.metadata-group .hover-marker'); // Do this only after chart is display, `.hover-marker` is a part of the chart's generated SVG
       tooltipContainer.datum([]).call(chartTooltip);
