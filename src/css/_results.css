@@ -6,11 +6,12 @@ button {
   top: 50px;
 }
 
-#resultData {
+#resultTop {
   display: flex;
   justify-content: center;
 }
 
-svg {
-
+#resultBottom {
+  display: flex;
+  justify-content: center;
 }
