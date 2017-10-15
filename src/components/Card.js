@@ -33,13 +33,22 @@ class Card extends Component {
     let voteList = {};
 
     votes.map((vote) => {
+
+      // for each vote { appName: Facebook, date: 120813317111 }
+      var date = new Date(vote.date).toISOString().substr(0,10);
+      var fullDate = date + "T07:00:00.000Z";
+      var dateList = [];
+
       if(voteList[vote.appName]) {
-        voteList[vote.appName] += 1;
+        voteList[vote.appName].push(fullDate);
       } else {
-        voteList[vote.appName] = 1;
+        voteList[vote.appName] = [];
+        voteList[vote.appName].push(fullDate);
       };
 
     });
+
+    console.log(voteList);
     return voteList;
   }
 

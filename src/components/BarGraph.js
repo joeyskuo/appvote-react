@@ -8,11 +8,13 @@ class BarGraph extends Component {
 
 
   formatData(rawData) {
+
     let data = [];
+    // rawDate = { key: [date, date, date]}
     for (var key in rawData){
       data.push({
         "name": key,
-        "value": rawData[key]
+        "value": rawData[key].length
       });
     }
 

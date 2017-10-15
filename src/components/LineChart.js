@@ -8,20 +8,39 @@ import '../css/_linechart.css';
 class LineChart extends Component {
 
   formatData(rawData) {
-    let data = [];
-    for (var key in rawData){
-      data.push({
-        "name": key,
-        "quantity": rawData[key]
-      });
-    }
+    let data = {
+      dataByTopic: []
+    };
 
+
+    for (var key in rawData){
+      let dates = [];
+      let tempDate = {};
+
+      for (var date in rawData[key]) {
+        console.log(`${date} for key ${key}`);
+        if(tempDate[date]) {
+          tempDate[date] += 1;
+        } else {
+          tempDate[date] = 1;
+        };
+      }
+
+      dates.push(tempDate);
+      data.dataByTopic.push(dates);
+      // data.push({
+      //   "name": key,
+      //   "quantity": rawData[key]
+      // });
+    }
+    console.log(data);
     return data;
   }
 
 
     componentDidMount() {
-       this.createLineChart()
+       this.createLineChart();
+       this.formatData(this.props.voteData);
     }
 
     createLineChart() {

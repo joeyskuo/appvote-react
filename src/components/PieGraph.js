@@ -11,7 +11,7 @@ class PieGraph extends Component {
     for (var key in rawData){
       data.push({
         "name": key,
-        "quantity": rawData[key]
+        "quantity": rawData[key].length
       });
     }
 

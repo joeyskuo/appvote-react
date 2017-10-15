@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Survey from './Survey';
 import Results from './Results';
+import '../css/_frame.css';
 
 class Frame extends Component {
 
