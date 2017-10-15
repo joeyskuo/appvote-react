@@ -12,13 +12,17 @@ class LineChart extends Component {
       dataByTopic: []
     };
 
-
+    let i = 1;
     for (var key in rawData){
+      let appData = {};
       let dates = [];
       let tempDate = {};
 
-      for (var date in rawData[key]) {
-        console.log(`${date} for key ${key}`);
+      for (var dateIndex in rawData[key]) {
+        //console.log(rawData[key]);
+        //console.log(`${date} for key ${key}`);
+
+        let date = rawData[key][dateIndex];
         if(tempDate[date]) {
           tempDate[date] += 1;
         } else {
@@ -26,12 +30,26 @@ class LineChart extends Component {
         };
       }
 
-      dates.push(tempDate);
-      data.dataByTopic.push(dates);
+      //console.log(tempDate);
+
+      for (var voteDate in tempDate) {
+        let tempVotes = {};
+        tempVotes.fullDate = voteDate;
+        tempVotes.value = tempDate[voteDate];
+        dates.push(tempVotes);
+      }
+
+
+      appData.topicName = key;
+      appData.topic = i;
+      appData.dates = dates;
+
+      data.dataByTopic.push(appData);
       // data.push({
       //   "name": key,
       //   "quantity": rawData[key]
       // });
+      i += 1;
     }
     console.log(data);
     return data;
