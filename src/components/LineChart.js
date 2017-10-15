@@ -62,7 +62,7 @@ class LineChart extends Component {
     }
 
     createLineChart() {
-      //var data = this.formatData(this.props.voteData);
+      var data = this.formatData(this.props.voteData);
       //var data = this.props.data;
 
       const lineChart = new britecharts.line();
@@ -94,7 +94,7 @@ class LineChart extends Component {
           .on('customMouseOut', chartTooltip.hide);
 
 
-      lineContainer.datum(dummyData).call(lineChart);
+      lineContainer.datum(data).call(lineChart);
 
       const tooltipContainer = lineContainer.select('.metadata-group .hover-marker'); // Do this only after chart is display, `.hover-marker` is a part of the chart's generated SVG
       tooltipContainer.datum([]).call(chartTooltip);
