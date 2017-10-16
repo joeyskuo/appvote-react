@@ -7,17 +7,32 @@ import '../css/_linechart.css';
 
 class LineChart extends Component {
 
+
+  // completely refactor asap
   formatData(rawData) {
     let data = {
       dataByTopic: []
     };
 
     let i = 1;
+
+    // for [ Facebook, Twitter, Instagram, etc... ]
     for (var key in rawData){
       let appData = {};
       let dates = [];
       let tempDate = {};
 
+      let day = new Date(2017, 9, 1);
+      var days = [];
+      while (day.getDate() <= (new Date()).getDate()) {
+         let tempDay = (new Date(day)).toISOString().substr(0,10) + "T07:00:00.000Z";
+         tempDate[tempDay] = 0;
+         //days.push();
+         day.setDate(day.getDate() + 1);
+      }
+      //console.log(days);
+
+      // for index in [0: "2017-10-13T07:00:00.00Z", 1: "2017-10-13T07:00:00.00Z"]
       for (var dateIndex in rawData[key]) {
         //console.log(rawData[key]);
         //console.log(`${date} for key ${key}`);
@@ -30,10 +45,12 @@ class LineChart extends Component {
         };
       }
 
-      //console.log(tempDate);
+      //Create voteCount object for dates[]
 
       for (var voteDate in tempDate) {
         let tempVotes = {};
+
+        // tempVotes = { 'fullDate': "12-02-17T01:XXXXXXX", 'value': 2}
         tempVotes.fullDate = voteDate;
         tempVotes.value = tempDate[voteDate];
         dates.push(tempVotes);
