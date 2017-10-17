@@ -26,19 +26,17 @@ class LineChart extends Component {
       lineChart
           .isAnimated(true)
           .height(300)
-          //.aspectRatio(0.5)
           .grid('horizontal')
-          //.tooltipThreshold(600)
           .width(containerWidth)
           .xAxisCustomFormat(lineChart.axisTimeCombinations.DAY_MONTH)
           .dateLabel('fullDate')
           .colorSchema([
-            '#3b5998', //green // facebook
-            '#00aced', //blue  // twitter
-            '#dd4b39', //yellow // google
-            '#007bb6', //orange // linkedin
-            '#bc2a8d', //pink // instagram
-            '#cb2027' //purple // pinterest
+            '#3b5998', // facebook
+            '#00aced', // twitter
+            '#dd4b39',  // google
+            '#007bb6', // linkedin
+            '#bc2a8d', // instagram
+            '#cb2027' // pinterest
         ])
           .on('customMouseOver', chartTooltip.show)
           .on('customMouseMove', chartTooltip.update)
@@ -47,7 +45,7 @@ class LineChart extends Component {
 
       lineContainer.datum(data).call(lineChart);
 
-      const tooltipContainer = lineContainer.select('.metadata-group .hover-marker'); // Do this only after chart is display, `.hover-marker` is a part of the chart's generated SVG
+      const tooltipContainer = lineContainer.select('.metadata-group .hover-marker');
       tooltipContainer.datum([]).call(chartTooltip);
 
     }
