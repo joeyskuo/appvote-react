@@ -3,25 +3,27 @@ import AppData from './AppData';
 class chartService {
 
   static initializeDates(){
-    let tempDate = {};
+    let emptyDates = {};
 
     // Starting date for line chart
     let day = new Date(2017, 9, 1);
 
+    const today = new Date().getDate();
+
     // While date is not today
-    while (day.getDate() <= (new Date()).getDate()) {
+    while (day.getDate() <= today) {
 
        // create simplified date ISO string
-       let tempDay = (new Date(day)).toISOString().substr(0,10) + "T07:00:00.000Z";
+       let tempDay = day.toISOString().substr(0,10) + "T07:00:00.000Z";
 
        // set voteCount to 0
-       tempDate[tempDay] = 0;
+       emptyDates[tempDay] = 0;
 
        // move on to next day
        day.setDate(day.getDate() + 1);
     }
 
-    return tempDate;
+    return emptyDates;
   }
 
   static formatData(appVoteDates) {
