@@ -5,70 +5,74 @@ import { connect } from 'react-redux';
 import dummyData from './res/dummyData';
 import '../css/_linechart.css';
 
+class AppData {
+  constructor( appName, appId, voteDates) {
+    this.topicName = appName;
+    this.topic = appId;
+    this.dates = voteDates;
+  }
+}
+
 class LineChart extends Component {
 
 
-  // completely refactor asap
-  formatData(rawData) {
+  initializeDates(){
+    let tempDate = {};
+
+    // Starting date for line chart
+    let day = new Date(2017, 9, 1);
+
+    // While date is not today
+    while (day.getDate() <= (new Date()).getDate()) {
+
+       // create simplified date ISO string
+       let tempDay = (new Date(day)).toISOString().substr(0,10) + "T07:00:00.000Z";
+
+       // set voteCount to 0
+       tempDate[tempDay] = 0;
+
+       // move on to next day
+       day.setDate(day.getDate() + 1);
+    }
+
+    return tempDate;
+  }
+
+
+
+  formatData(appVoteDates) {
+
     let data = {
       dataByTopic: []
     };
 
-    let i = 1;
+    // initial appId
+    let appId = 1;
 
-    // for [ Facebook, Twitter, Instagram, etc... ]
-    for (var key in rawData){
-      let appData = {};
+    // Create list of all dates since Oct 1 with empty vote counts
+    let dateList = this.initializeDates();
+
+    // for Facebook, Twitter, Instagram, etc...
+    for (var appName in appVoteDates){
+
+      // Copy list of empty dates
+      let tempDate = Object.assign({}, dateList);
+
+      // If app was found in any vote object, add one to vote count for that day
+      appVoteDates[appName].forEach((date) => tempDate[date] += 1);
+
+      // Format vote data as a list of dates and number of votes for that day
       let dates = [];
-      let tempDate = {};
+      for(var voteDate in tempDate) dates.push({fullDate: voteDate, value: tempDate[voteDate]});
 
-      let day = new Date(2017, 9, 1);
-      var days = [];
-      while (day.getDate() <= (new Date()).getDate()) {
-         let tempDay = (new Date(day)).toISOString().substr(0,10) + "T07:00:00.000Z";
-         tempDate[tempDay] = 0;
-         //days.push();
-         day.setDate(day.getDate() + 1);
-      }
-      //console.log(days);
+      // Add all data for current app
+      data.dataByTopic.push(new AppData(appName, appId, dates));
 
-      // for index in [0: "2017-10-13T07:00:00.00Z", 1: "2017-10-13T07:00:00.00Z"]
-      for (var dateIndex in rawData[key]) {
-        //console.log(rawData[key]);
-        //console.log(`${date} for key ${key}`);
-
-        let date = rawData[key][dateIndex];
-        if(tempDate[date]) {
-          tempDate[date] += 1;
-        } else {
-          tempDate[date] = 1;
-        };
-      }
-
-      //Create voteCount object for dates[]
-
-      for (var voteDate in tempDate) {
-        let tempVotes = {};
-
-        // tempVotes = { 'fullDate': "12-02-17T01:XXXXXXX", 'value': 2}
-        tempVotes.fullDate = voteDate;
-        tempVotes.value = tempDate[voteDate];
-        dates.push(tempVotes);
-      }
-
-
-      appData.topicName = key;
-      appData.topic = i;
-      appData.dates = dates;
-
-      data.dataByTopic.push(appData);
-      // data.push({
-      //   "name": key,
-      //   "quantity": rawData[key]
-      // });
-      i += 1;
+      // Next App
+      appId += 1;
     }
-    console.log(data);
+
+    // Return data formatted for d3 rendering
     return data;
   }
 
