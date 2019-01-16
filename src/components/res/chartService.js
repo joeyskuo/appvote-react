@@ -6,7 +6,7 @@ class chartService {
     let emptyDates = {};
 
     // Starting date for line chart
-    let day = new Date(2017, 9, 1);
+    let day = new Date(2019, 0, 14);
 
     const today = new Date().getDate();
 
